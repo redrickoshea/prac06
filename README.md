@@ -15,7 +15,7 @@ database. We have set this up with a username of "root" and a password of "", wh
 
 You will also need to run names.sql, which is available on Blackboard. The instructions for MariaDB will also describe how to do this.
 
-Install the MariaDB JDBC Driver in any IntelliJ project by opening Project Structure -> Libraries -> New Project Library (+ button). Then search for `org.mariadb.jdbc:mariadb-java-client` and install the latest version.
+Install the MariaDB JDBC driver in any IntelliJ project by opening Project Structure -> Libraries -> New Project Library (+ button). Then search for `org.mariadb.jdbc:mariadb-java-client` and install the latest version.
 Alternatively, the MySQL JDBC driver (MySQL Connector/J) is available from [http://dev.mysql.com/downloads/connector/](http://dev.mysql.com/downloads/connector/), along with connectors for 
 other programming languages.
 
@@ -31,6 +31,8 @@ this is used in a number of the source files.
 Information about the location of the database, the port to connect to and the username and password to use are stored in `db.props` and read by the `DBConnection` class. This should only require changing if you have different username/password requirements.
 
 ## Exercise – The JDBC AddressBook
+
+Make sure you have the MariaDB JDBC driver prepared for this project as well as a MariaDB server running.
 
 This code in this repository provides a simple Address Book application used in an earlier Java course by Mal Corney. 
 In that environment, it was made to talk to a number of different data sources. Here we shall hook it up to a MariaDB
