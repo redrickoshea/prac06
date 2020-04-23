@@ -1,7 +1,7 @@
 CAB302 Software Development
 ===========================
 
-# Practical 11: Data Connectivity - JDBC
+# Week 8: Data Connectivity - JDBC
 
 The classes for this week are about the use of JDBC in a fairly simple application which talks to a MariaDB backend 
 database. Note that there may be individual differences between these instructions and your experience based on how you have installed MariaDB-- adjust settings accordingly.
