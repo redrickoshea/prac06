@@ -4,8 +4,6 @@ import javax.swing.SwingUtilities;
 
 /**
  * Invokes the Address Book application.
- * @author Malcolm Corney
- * @version $Id:  Exp $
  */
 public class AddressBook {
    

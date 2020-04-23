@@ -5,18 +5,12 @@ import javax.swing.ListModel;
 
 /**
  * This version uses an AddressBookDataSource and its methods to retrieve data
- * 
- * @author Malcolm Corney
- * @version $Id: Exp $
- * 
  */
 public class AddressBookData {
 
    DefaultListModel listModel;
 
-   /* BEGIN MISSING CODE */
-   XXXXXX XXXXXX;
-   /* END MISSING CODE */
+   AddressBookDataSource addressData;
 
    /**
     * Constructor initializes the list model that holds names as Strings and
@@ -27,7 +21,7 @@ public class AddressBookData {
    public AddressBookData() {
       listModel = new DefaultListModel();
       /* BEGIN MISSING CODE */
-      XXXXXX = new XXXXXX();
+      addressData = new JDBCAddressBookDataSource();
       /* END MISSING CODE */
 
       // add the retrieved data to the list model

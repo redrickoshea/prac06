@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 /**
  * Stores address details for a person.
- * 
- * @author Malcolm Corney
- * @version $Id: Exp $
  */
 public class Person implements Comparable<Person>, Serializable {
 
@@ -130,7 +127,7 @@ public class Person implements Comparable<Person>, Serializable {
    }
    
    /**
-    * @see Object#toString()
+    * @see java.lang.Object#toString()
     */
    public String toString() {
       return name + " " + street + ", " + suburb + " " + phone + " " + email;

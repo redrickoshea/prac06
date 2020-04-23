@@ -52,10 +52,10 @@ public class JDBCAddressBookDataSource implements AddressBookDataSource {
          st.execute(CREATE_TABLE);
          /* BEGIN MISSING CODE */
          addPerson = connection.prepareStatement(INSERT_PERSON);
-         getNameList = XXXXXX.XXXXXX(XXXXXX);
-         getPerson = XXXXXX.XXXXXX(XXXXXX);
-         deletePerson = XXXXXX.XXXXXX(XXXXXX);
-         rowCount = XXXXXX.XXXXXX(XXXXXX);
+         getNameList = connection.prepareStatement(GET_NAMES);
+         getPerson = connection.prepareStatement(GET_PERSON);
+         deletePerson = connection.prepareStatement(DELETE_PERSON);
+         rowCount = connection.prepareStatement(COUNT_ROWS);
          /* END MISSING CODE */
       } catch (SQLException ex) {
          ex.printStackTrace();
@@ -63,17 +63,17 @@ public class JDBCAddressBookDataSource implements AddressBookDataSource {
    }
 
    /**
-    * @see AddressBookDataSource#addPerson(Person)
+    * @see dataExercise.AddressBookDataSource#addPerson(dataExercise.Person)
     */
    public void addPerson(Person p) {
       try {
          /* BEGIN MISSING CODE */
          addPerson.setString(1, p.getName());
-         addPerson.XXXXXX(XXXXXX,XXXXXX);
-         addPerson.XXXXXX(XXXXXX,XXXXXX);
-         addPerson.XXXXXX(XXXXXX,XXXXXX);
-         addPerson.XXXXXX(XXXXXX,XXXXXX);
-         addPerson.XXXXXX();
+         addPerson.setString(2, p.getStreet());
+         addPerson.setString(3, p.getSuburb());
+         addPerson.setString(4, p.getPhone());
+         addPerson.setString(5, p.getEmail());
+         addPerson.execute();
          /* END MISSING CODE */
       } catch (SQLException ex) {
          ex.printStackTrace();
@@ -89,9 +89,9 @@ public class JDBCAddressBookDataSource implements AddressBookDataSource {
 
       /* BEGIN MISSING CODE */
       try {
-         rs = XXXXXX.XXXXXX();
+         rs = getNameList.executeQuery();
          while (rs.next()) {
-            XXXXXX.XXXXXX(XX.XXXXXX(XXXXXX));
+            names.add(rs.getString("name"));
          }
       } catch (SQLException ex) {
          ex.printStackTrace();
@@ -102,21 +102,21 @@ public class JDBCAddressBookDataSource implements AddressBookDataSource {
    }
 
    /**
-    * @see AddressBookDataSource#getPerson(String)
+    * @see dataExercise.AddressBookDataSource#getPerson(java.lang.String)
     */
    public Person getPerson(String name) {
       Person p = new Person();
       ResultSet rs = null;
       /* BEGIN MISSING CODE */
       try {
-    	 getPerson.XXXXXX(XXXXXX, XXXXXX);
-         rs = XXXXXX.XXXXXX();
-         rs.XXXXXX();
+         getPerson.setString(1, name);
+         rs = getPerson.executeQuery();
+         rs.first();
          p.setName(rs.getString("name"));
-         p.XXXXXX(XXXXXX.XXXXXX("XXXXXX"));
-         p.XXXXXX(XXXXXX.XXXXXX("XXXXXX"));
-         p.XXXXXX(XXXXXX.XXXXXX("XXXXXX"));
-         p.XXXXXX(XXXXXX.XXXXXX("XXXXXX"));
+         p.setStreet(rs.getString("street"));
+         p.setSuburb(rs.getString("suburb"));
+         p.setPhone(rs.getString("phone"));
+         p.setEmail(rs.getString("email"));
       } catch (SQLException ex) {
          ex.printStackTrace();
       }
@@ -125,7 +125,7 @@ public class JDBCAddressBookDataSource implements AddressBookDataSource {
    }
 
    /**
-    * @see AddressBookDataSource#getSize()
+    * @see dataExercise.AddressBookDataSource#getSize()
     */
    public int getSize() {
       ResultSet rs = null;
@@ -133,9 +133,9 @@ public class JDBCAddressBookDataSource implements AddressBookDataSource {
 
       /* BEGIN MISSING CODE */
       try {
-         rs = XXXXXX();
-         rs.XXXXXX();
-         rows = rs.XXXXXX(XXXXXX);
+         rs = rowCount.executeQuery();
+         rs.first();
+         rows = rs.getInt(1);
       } catch (SQLException ex) {
          ex.printStackTrace();
       }
@@ -145,13 +145,13 @@ public class JDBCAddressBookDataSource implements AddressBookDataSource {
    }
 
    /**
-    * @see AddressBookDataSource#deletePerson(String)
+    * @see dataExercise.AddressBookDataSource#deletePerson(java.lang.String)
     */
    public void deletePerson(String name) {
       /* BEGIN MISSING CODE */
       try {
-         deletePerson.XXXXXX(XXXXXX, XXXXXX);
-         deletePerson.XXXXXX();
+         deletePerson.setString(1, name);
+         deletePerson.executeUpdate();
       } catch (SQLException ex) {
          ex.printStackTrace();
       }
@@ -159,12 +159,12 @@ public class JDBCAddressBookDataSource implements AddressBookDataSource {
    }
 
    /**
-    * @see AddressBookDataSource#close()
+    * @see dataExercise.AddressBookDataSource#close()
     */
    public void close() {
       /* BEGIN MISSING CODE */
       try {
-         XXXXXX.XXXXXX();
+         connection.close();
       } catch (SQLException ex) {
          ex.printStackTrace();
       }

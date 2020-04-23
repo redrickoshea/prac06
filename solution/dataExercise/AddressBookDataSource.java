@@ -5,10 +5,6 @@ import java.util.Set;
 /**
  * Provides functionality needed by any data source for the Address Book
  * application.
- * 
- * @author Malcolm Corney<BR>
- *         SEDC, FIT, QUT
- * @version - 24/05/2006
  */
 public interface AddressBookDataSource {
 

@@ -25,10 +25,6 @@ import javax.swing.event.ListSelectionListener;
 /**
  * Initiates user interface for the AddressBook application. All listeners for
  * the application are included as inner classes of this class.
- * 
- * @author Malcolm Corney
- * @version $Id: Exp $
- * 
  */
 public class AddressBookUI extends JFrame {
 
@@ -293,15 +289,11 @@ public class AddressBookUI extends JFrame {
 
    /**
     * Handles events for the three buttons on the UI.
-    * 
-    * @author Malcolm Corney
-    * @version $Id: Exp $
-    * 
     */
    private class ButtonListener implements ActionListener {
 
       /**
-       * @see ActionListener#actionPerformed(ActionEvent)
+       * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
        */
       public void actionPerformed(ActionEvent e) {
          int size = data.getSize();
@@ -377,7 +369,7 @@ public class AddressBookUI extends JFrame {
    private class NameListListener implements ListSelectionListener {
 
       /**
-       * @see ListSelectionListener#valueChanged(ListSelectionEvent)
+       * @see javax.swing.event.ListSelectionListener#valueChanged(javax.swing.event.ListSelectionEvent)
        */
       public void valueChanged(ListSelectionEvent e) {
          if (nameList.getSelectedValue() != null
@@ -394,7 +386,7 @@ public class AddressBookUI extends JFrame {
    private class ClosingListener extends WindowAdapter {
 
       /**
-       * @see WindowAdapter#windowClosing(WindowEvent)
+       * @see java.awt.event.WindowAdapter#windowClosing(java.awt.event.WindowEvent)
        */
       public void windowClosing(WindowEvent e) {
          data.persist();
