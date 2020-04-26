@@ -14,23 +14,23 @@ import java.util.TreeSet;
  */
 public class JDBCAddressBookDataSource implements AddressBookDataSource {
 
-   public static final String CREATE_TABLE = 
-      "CREATE TABLE IF NOT EXISTS address ("
-          + "idx INT NOT NULL AUTO_INCREMENT UNIQUE,"
-          + "name VARCHAR(30),"
-          + "street VARCHAR(30),"
-          + "suburb VARCHAR(20),"
-          + "phone VARCHAR(10),"
-          + "email VARCHAR(30)" + ");";
+   public static final String CREATE_TABLE =
+           "CREATE TABLE IF NOT EXISTS address ("
+                   + "idx INTEGER PRIMARY KEY /*!40101 AUTO_INCREMENT */ NOT NULL UNIQUE," // from https://stackoverflow.com/a/41028314
+                   + "name VARCHAR(30),"
+                   + "street VARCHAR(30),"
+                   + "suburb VARCHAR(20),"
+                   + "phone VARCHAR(10),"
+                   + "email VARCHAR(30)" + ");";
 
-   private static final String INSERT_PERSON = "INSERT INTO address VALUES (DEFAULT, ?, ?, ?, ?, ?);";
+   private static final String INSERT_PERSON = "INSERT INTO address (name, street, suburb, phone, email) VALUES (?, ?, ?, ?, ?);";
 
    private static final String GET_NAMES = "SELECT name FROM address";
 
    private static final String GET_PERSON = "SELECT * FROM address WHERE name=?";
 
    private static final String DELETE_PERSON = "DELETE FROM address WHERE name=?";
-   
+
    private static final String COUNT_ROWS = "SELECT COUNT(*) FROM address";
 
    private Connection connection;
@@ -42,7 +42,7 @@ public class JDBCAddressBookDataSource implements AddressBookDataSource {
    private PreparedStatement getPerson;
 
    private PreparedStatement deletePerson;
-   
+
    private PreparedStatement rowCount;
 
    public JDBCAddressBookDataSource() {
@@ -97,7 +97,7 @@ public class JDBCAddressBookDataSource implements AddressBookDataSource {
          ex.printStackTrace();
       }
       /* END MISSING CODE */
-      
+
       return names;
    }
 
@@ -109,7 +109,7 @@ public class JDBCAddressBookDataSource implements AddressBookDataSource {
       ResultSet rs = null;
       /* BEGIN MISSING CODE */
       try {
-    	 getPerson.XXXXXX(XXXXXX, XXXXXX);
+         getPerson.XXXXXX(XXXXXX, XXXXXX);
          rs = XXXXXX.XXXXXX();
          rs.XXXXXX();
          p.setName(rs.getString("name"));
