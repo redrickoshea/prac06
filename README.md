@@ -15,7 +15,7 @@ database. We have set this up with a username of "root" and a password of "", wh
 
 You will also need to run names.sql, which is available on Blackboard. The instructions for MariaDB will also describe how to do this.
 
-Install the MariaDB JDBC driver in any IntelliJ project by opening Project Structure -> Libraries -> New Project Library (+ button). Then search for `org.mariadb.jdbc:mariadb-java-client` and install the latest version.
+Install the MariaDB JDBC driver in any IntelliJ project by opening Project Structure -> Libraries -> New Project Library (+ button) -> From Maven -> Search for `org.mariadb.jdbc:mariadb-java-client` and install the latest version.
 Alternatively, the MySQL JDBC driver (MySQL Connector/J) is available from [http://dev.mysql.com/downloads/connector/](http://dev.mysql.com/downloads/connector/), along with connectors for 
 other programming languages.
 
