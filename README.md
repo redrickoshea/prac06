@@ -1,38 +1,66 @@
 CAB302 Software Development
 ===========================
 
-# Week 8: Data Connectivity - JDBC
+# Week 7: Database Connectivity
 
-The classes for this week are about the use of JDBC in a fairly simple application which talks to a MariaDB backend 
-database. Note that there may be individual differences between these instructions and your experience based on how you have installed MariaDB-- adjust settings accordingly.
+The classes for this week are about the use of JDBC in a fairly simple application which talks to a backend  database.
+Note that there may be individual differences between these instructions and your experience based on how you have
+installed your backend database-- adjust settings accordingly.
+
+There are two options for this week's practical; MariaDB and SQLite3. SQLite3 takes less setup work and may be more
+ideal for getting something working faster, while MariaDB will give you experience with setting things up to
+work with a 'proper' database.
+
+## Preparation - Getting started with SQLite3
+
+SQLite3 does not require any actual database server to be installed and running on your machine. The JDBC driver
+itself acts as the database server, which means you only need to install the JDBC driver for SQLite3, point it at
+a file, and it will use that file as its database.
+
+First, install the JDBC driver. The easiest way is to do this via Maven. Open up Project Structure, go to Libraries,
+click the plus (+) icon ('New Project Library'), choose 'From Maven...', paste in `org.xerial:sqlite-jdbc:3.34.02` then
+click 'OK'. When it asks you which project you want to add the module to, choose this project (prac07).
+
+You are now almost all set, at least to attempt the address book exercise in this practical. The only thing you need
+to do is alter your `db.props` file so that it looks like this:
+
+    jdbc.url=jdbc:sqlite:cab302.db
+    jdbc.schema=
+    jdbc.username=
+    jdbc.password=
+
+Now, when you first connect to this database, the `cab302.db` file will be created  in your project directory. This
+file contains the full contents of the database and will be modified whenever you save to it from the AddressBook.
 
 ## Preparation - Getting started with MariaDB
 
-First, if you have not done so already, you will need to install MariaDB. Instructions for doing so are on Blackboard under Learning Resources -> Guides and Other Resources.
+First, if you have not done so already, you will need to install MariaDB Server. MariaDB Server can be downloaded from [https://mariadb.org/download/](https://mariadb.org/download/).
+
+The exact process of installation will depend on your particular platform and requirements. There are two specific steps
+during installation you should make note of:
+
+1. The port number. By default, MariaDB runs on a port of 3306. This is usually fine, but if you already have another
+   MariaDB or MySQL instance installed and running, you should choose another port so they do not clash.
+   
+2. The root password. You will need this to make any changes to the database.
 
 Note the file 'db.props' in both the lecture examples and this repository. It contains the username and password for the
-database. We have set this up with a username of "root" and a password of "", which is fine with the default MariaDB configuration, but will need to be changed if you specified a root password. Note that in a production database you would create a specific user with restricted credentials and use that instead.
+database. We have set this up with a username of "root" and a password of "", but you will probably need to change these
+values. The easiest way to get these exercises running is to just provide your root username and password, but in
+the long term it is best to create new users and give them the necessary access to just one database. This way you
+do not need to put your MariaDB root password in a file in your project directory.
 
-You will also need to run names.sql, which is available on Blackboard. The instructions for MariaDB will also describe how to do this.
+If you intend to run the lecture examples you will need to run `names.sql`, which is available on the Blackboard
+page for Lecture 7.
 
 Install the MariaDB JDBC driver in any IntelliJ project by opening Project Structure -> Libraries -> New Project Library (+ button) -> From Maven -> Search for `org.mariadb.jdbc:mariadb-java-client` and install the latest version.
 Alternatively, the MySQL JDBC driver (MySQL Connector/J) is available from [http://dev.mysql.com/downloads/connector/](http://dev.mysql.com/downloads/connector/), along with connectors for 
 other programming languages.
 
-## Exercise – Getting started with the Lecture Examples
-
-Consider running the lecture exercises (available from Blackboard) prior to undertaking the more 
-advanced `AddressBook` example to ensure that the connection is set up and operating correctly. Make sure they 
-compile and run. The MySQL JDBC driver has also been bundled with the lecture material project, and included as a dependency in IntelliJ.
-
-This driver has been altered so that there is no need to use `Class.forName("...` to load the Driver class, although 
-this is used in a number of the source files.
-
-Information about the location of the database, the port to connect to and the username and password to use are stored in `db.props` and read by the `DBConnection` class. This should only require changing if you have different username/password requirements.
-
 ## Exercise – The JDBC AddressBook
 
-Make sure you have the MariaDB JDBC driver prepared for this project as well as a MariaDB server running.
+Make sure you have the SQLite3 or MariaDB JDBC driver prepared for this project. If you are using MariaDB you will
+also need to have that running.
 
 This code in this repository provides a simple Address Book application used in an earlier Java course by Mal Corney. 
 In that environment, it was made to talk to a number of different data sources. Here we shall hook it up to a MariaDB
