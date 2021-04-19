@@ -109,7 +109,7 @@ as follows. Code positions are clearly marked in the relevant source files.***
   - `getPerson()`
     - Set the place holder for the `name` parameter.
     - Execute the query and assign the returned `ResultSet` to `rs`.
-    - Use the `ResultSet.first()` method to place the cursor on the first row of the `ResultSet`.
+    - Use the `ResultSet.first()` method to place the cursor on the first row of the `ResultSet`. (Hint: you'll need to pass `ResultSet.TYPE_SCROLL_INSENSITIVE` as an argument when creating the statement to enable `.first()` to work. See the lecture slides for details.)
     - Extract the data from the columns and use the setter methods in `Person` to receive the data.
   - `getSize()`
     - Execute the rowCount statement.
