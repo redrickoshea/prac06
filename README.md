@@ -18,7 +18,7 @@ itself acts as the database server, which means you only need to install the JDB
 a file, and it will use that file as its database.
 
 First, install the JDBC driver. The easiest way is to do this via Maven. Open up Project Structure, go to Libraries,
-click the plus (+) icon ('New Project Library'), choose 'From Maven...', paste in `org.xerial:sqlite-jdbc:3.34.02` then
+click the plus (+) icon ('New Project Library'), choose 'From Maven...', paste in `org.xerial:sqlite-jdbc:3.34.0` then
 click 'OK'. When it asks you which project you want to add the module to, choose this project (prac07).
 
 You are now almost all set, at least to attempt the address book exercise in this practical. The only thing you need
