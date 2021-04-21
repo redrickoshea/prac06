@@ -113,7 +113,7 @@ as follows. Code positions are clearly marked in the relevant source files.***
     - Extract the data from the columns and use the setter methods in `Person` to receive the data.
   - `getSize()`
     - Execute the rowCount statement.
-    - Use the `ResultSet first()` method to place the cursor and retrieve the number of rows as an `int`.
+    - Use `ResultSet next()`, then retrieve the number of rows as an `int`.
   - `deletePerson()`
     - Set the name parameter into the statement and execute the update query.
   - `close()`
