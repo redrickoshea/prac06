@@ -1,7 +1,7 @@
 CAB302 Software Development
 ===========================
 
-# Week 7: Database Connectivity
+# Week 6: Database Connectivity
 
 The classes for this week are about the use of JDBC in a fairly simple application which talks to a backend  database.
 Note that there may be individual differences between these instructions and your experience based on how you have
@@ -18,8 +18,8 @@ itself acts as the database server, which means you only need to install the JDB
 a file, and it will use that file as its database.
 
 First, install the JDBC driver. The easiest way is to do this via Maven. Open up Project Structure, go to Libraries,
-click the plus (+) icon ('New Project Library'), choose 'From Maven...', paste in `org.xerial:sqlite-jdbc:3.34.0` then
-click 'OK'. When it asks you which project you want to add the module to, choose this project (prac07).
+click the plus (+) icon ('New Project Library'), choose 'From Maven...', paste in `org.xerial:sqlite-jdbc:3.36.0.3` then
+click 'OK'. When it asks you which project you want to add the module to, choose this project (prac06).
 
 You are now almost all set, at least to attempt the address book exercise in this practical. The only thing you need
 to do is alter your `db.props` file so that it looks like this:
@@ -51,11 +51,11 @@ the long term it is best to create new users and give them the necessary access 
 do not need to put your MariaDB root password in a file in your project directory.
 
 If you intend to run the lecture examples you will need to run `names.sql`, which is available on the Blackboard
-page for Lecture 7.
+page for Week 6 in the `lec06-dataconn.zip` archive.
 
 Install the MariaDB JDBC driver in any IntelliJ project by opening Project Structure -> Libraries -> New Project Library (+ button) -> From Maven -> Search for `org.mariadb.jdbc:mariadb-java-client` and install the latest version.
-Alternatively, the MySQL JDBC driver (MySQL Connector/J) is available from [http://dev.mysql.com/downloads/connector/](http://dev.mysql.com/downloads/connector/), along with connectors for 
-other programming languages.
+Alternatively, the MySQL JDBC driver (MySQL Connector/J) is available from [https://dev.mysql.com/downloads/connector/j/](https://dev.mysql.com/downloads/connector/j/), along with connectors for 
+other programming languages. If you download the .jar from the site, you will want to put it in your project directory and then add it as a library in Project Structure.
 
 ## Exercise – The JDBC AddressBook
 
