@@ -15,7 +15,7 @@ public class AddressBookData {
    DefaultListModel listModel;
 
    /* BEGIN MISSING CODE */
-   XXXXXX XXXXXX;
+   AddressBookDataSource addressData;
    /* END MISSING CODE */
 
    /**
@@ -27,7 +27,7 @@ public class AddressBookData {
    public AddressBookData() {
       listModel = new DefaultListModel();
       /* BEGIN MISSING CODE */
-      XXXXXX = new XXXXXX();
+      addressData = new JDBCAddressBookDataSource();
       /* END MISSING CODE */
 
       // add the retrieved data to the list model
